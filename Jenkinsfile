@@ -26,6 +26,12 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
+	stage('OWASP DependencyCheck') {
+	    steps {
+	        dependencyCheck additionalArguments: '--format HTML --format XML', odcInstallation: 'OWASP-DC'
+	    }
+	}
+
         
     }
 }
